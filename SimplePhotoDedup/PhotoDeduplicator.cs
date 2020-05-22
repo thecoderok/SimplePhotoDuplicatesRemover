@@ -71,6 +71,19 @@ namespace SimplePhotoDedup
             {
                 DirSearch(dir, processedDirectories, filesFound);
             }
+            // TODO: Post event about how many files were found
+            var searchResults = this.ProcessFiles(filesFound, cancelToken);
+        }
+
+        private object ProcessFiles(HashSet<string> filesFound, CancellationToken cancelToken)
+        {
+            var searchResult = new Dictionary<string, ISet<string>>();
+            int duplicatesCount = 0;
+            foreach(var file in filesFound)
+            {
+                // Compute Hash
+                // Check if duplicate
+            }
         }
 
         private void DirSearch(string dir, ISet<string> processedDirectories, ISet<string> filesFound)
@@ -90,6 +103,7 @@ namespace SimplePhotoDedup
             {
                 foreach (string file in Directory.GetFiles(d))
                 {
+                    // TODO: Only add images
                     filesFound.Add(file);
                 }
                 DirSearch(d, processedDirectories, filesFound);
