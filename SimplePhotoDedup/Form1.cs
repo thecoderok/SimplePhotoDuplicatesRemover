@@ -18,6 +18,7 @@ namespace SimplePhotoDedup
             this.deduplicator = new PhotoDeduplicator();
             this.StatusLabel.Text = deduplicator.CurrentStatus.ToString();
             this.deduplicator.StatusChangeEvent += Deduplicator_StatusChangeEvent;
+            this.selectedDirectoriesList.Items.Add(@"E:\temp");
         }
 
         private void Deduplicator_StatusChangeEvent(Status newStatus)
